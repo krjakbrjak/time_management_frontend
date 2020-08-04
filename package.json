@@ -1,10 +1,14 @@
 {
   "name": "time_management_frontend",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "",
-  "main": "index.js",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "webpack",
+    "start": "webpack-dev-server",
+    "cypress:open": "cypress open",
+    "test": "jest",
+    "jsdoc:gen": "jsdoc -c jsdoc.conf.json"
   },
   "repository": {
     "type": "git",
@@ -15,5 +19,51 @@
   "bugs": {
     "url": "https://github.com/krjakbrjak/time_management_frontend/issues"
   },
-  "homepage": "https://github.com/krjakbrjak/time_management_frontend#readme"
+  "homepage": "https://github.com/krjakbrjak/time_management_frontend#readme",
+  "devDependencies": {
+    "@babel/core": "^7.11.0",
+    "@babel/plugin-transform-runtime": "^7.11.0",
+    "@babel/preset-env": "^7.11.0",
+    "@babel/preset-react": "^7.10.4",
+    "@testing-library/react": "^10.4.8",
+    "babel-eslint": "^10.1.0",
+    "babel-loader": "^8.1.0",
+    "better-docs": "^2.3.0",
+    "cypress": "^4.12.0",
+    "eslint": "^7.7.0",
+    "eslint-config-airbnb": "^18.2.0",
+    "eslint-loader": "^4.0.2",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
+    "eslint-plugin-react": "^7.20.6",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^26.2.2",
+    "jsdoc": "^3.6.5",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0",
+    "webpack-merge": "^5.1.1"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.11.2",
+    "@testing-library/jest-dom": "^5.11.3",
+    "css-loader": "^4.2.1",
+    "normalize.css": "^8.0.1",
+    "prop-types": "^15.7.2",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-redux": "^7.2.1",
+    "redux": "^4.0.5",
+    "style-loader": "^1.2.1"
+  },
+  "jest": {
+    "verbose": true,
+    "testMatch": [
+      "**/__tests__/**/*.[jt]s?(x)"
+    ],
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+      "\\.(css|less)$": "identity-obj-proxy"
+    }
+  }
 }

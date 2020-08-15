@@ -1,0 +1,21 @@
+.container-outer {
+    display: flex;
+    justify-content: center;
+}
+
+.container-inner {
+    display: flex;
+    flex-direction: column;
+}
+
+.container-inner > input[type="submit"] {
+    margin-top: 1rem;
+}
+
+.container-inner > label {
+    margin-top: 1rem;
+}
+
+.container-inner > input {
+    margin-right: auto;
+}

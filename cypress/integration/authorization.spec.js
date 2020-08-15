@@ -11,6 +11,14 @@ describe('Creating a message', () => {
         cy.get('[data-testid="password"]')
             .type('password');
 
+        cy.server();
+        cy.route({
+            method: 'POST',
+            url: '/api/auth/login/',
+            response: {
+                'username': 'user'
+            }
+        })
         cy.get('[data-testid="login"]')
             .click()
             .wait(1000)

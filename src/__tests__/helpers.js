@@ -1,37 +1,47 @@
+import sinon from 'sinon';
+
 import {
     login,
     logout
 } from '../helpers/authorization';
 import { isEmpty } from '../helpers/object';
 
-describe('Helpers\' tests', () => {
+describe('Helpers', () => {
+    let xhr = null;
+    let requests = [];
+
     beforeEach(() => {
-        if (global.fetch) {
-            global.fetch.mockClear();
-        }
-    })
-    it('login', async () => {
-        global.fetch = jest.fn().mockImplementationOnce(() => Promise.resolve({
-            status: 200,
-            json: async () => Promise.resolve({user: 'username'})
-        }));
-
-        const result = await login('username', 'password');
-
-        expect(result).toEqual({
-            user: 'username'
-        });
+        xhr = sinon.useFakeXMLHttpRequest();
+        requests = [];
+        xhr.onCreate = (xhr) => {
+            requests.push(xhr);
+        };
     });
 
-    it('logout', async () => {
-        global.fetch = jest.fn().mockImplementationOnce(() => Promise.resolve({
-            status: 200,
-            json: async () => Promise.resolve(null)
-        }));
+    afterEach(() => {
+        xhr.restore();
+    });
 
-        const result = await logout();
+    it('login', async (done) => {
+        login('username', 'password')
+            .then((result) => {
+                expect(requests.length).toEqual(1);
+                expect(result).toEqual({
+                    user: 'username'
+                });
+                done();
+            });
+        requests[0].respond(200, null, JSON.stringify({ user: 'username' }));
+    });
 
-        expect(result).toEqual(null);
+    it('logout', async (done) => {
+        const result = logout()
+            .then((result) => {
+                expect(requests.length).toEqual(1);
+                expect(result).toEqual(null);
+                done();
+            });
+        requests[0].respond(200, null, JSON.stringify(null));
     });
 
     it('isEmpty', async () => {

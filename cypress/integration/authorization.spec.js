@@ -1,7 +1,17 @@
 /// <reference types="Cypress" />
 
-describe('Creating a message', () => {
+import { AUTH_API, SESSION_API } from '../../src/helpers/endpoints';
+
+describe('Authorization', () => {
     it('Displays the message in the list', () => {
+        cy.server();
+        // Fake GET SESSION request => not authorized
+        cy.route({
+            method: 'GET',
+            url: SESSION_API,
+            status: 401,
+            response: {}
+        })
         cy.visit('http://localhost:9000');
 
         cy.get('[data-testid="username"]')
@@ -11,10 +21,10 @@ describe('Creating a message', () => {
         cy.get('[data-testid="password"]')
             .type('password');
 
-        cy.server();
+        // Fake POST credentials request => successfully logged in
         cy.route({
             method: 'POST',
-            url: '/api/auth/login/',
+            url: AUTH_API,
             response: {
                 'username': 'user'
             }

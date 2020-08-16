@@ -1,21 +1,26 @@
-.container-outer {
+.containerOuter {
     display: flex;
     justify-content: center;
 }
 
-.container-inner {
+.containerInner {
     display: flex;
     flex-direction: column;
 }
 
-.container-inner > input[type="submit"] {
+.containerInner > input[type="submit"] {
+    width: 100%;
+    padding-top: 1rem;
+}
+
+.containerInner > label {
     margin-top: 1rem;
 }
 
-.container-inner > label {
-    margin-top: 1rem;
-}
-
-.container-inner > input {
+.containerInner > input {
     margin-right: auto;
+}
+
+.btn {
+    composes: btn from './common.css';
 }

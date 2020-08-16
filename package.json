@@ -7,7 +7,7 @@
     "build": "webpack",
     "start": "webpack-dev-server",
     "cypress:open": "cypress open",
-    "cypress:run": "cypress run --record --key 9e709ded-eb99-45d4-8a29-c16f79a786cd",
+    "cypress:run": "cypress run",
     "e2e": "start-server-and-test start http://localhost:9000 cypress:run",
     "test": "jest",
     "jsdoc:gen": "jsdoc -c jsdoc.conf.json"

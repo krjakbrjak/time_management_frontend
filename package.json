@@ -8,6 +8,7 @@
     "start": "webpack-dev-server",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
+    "e2e": "start-server-and-test start http://localhost:9000 cypress:run",
     "test": "jest",
     "jsdoc:gen": "jsdoc -c jsdoc.conf.json"
   },
@@ -41,6 +42,7 @@
     "jest": "^26.2.2",
     "jsdoc": "^3.6.5",
     "sinon": "^9.0.3",
+    "start-server-and-test": "^1.11.3",
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0",

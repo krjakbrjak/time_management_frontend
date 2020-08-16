@@ -7,6 +7,7 @@
     "build": "webpack",
     "start": "webpack-dev-server",
     "cypress:open": "cypress open",
+    "cypress:run": "cypress run",
     "test": "jest",
     "jsdoc:gen": "jsdoc -c jsdoc.conf.json"
   },

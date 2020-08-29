@@ -1,0 +1,25 @@
+.header {
+    position: sticky;
+    position: -webkit-sticky;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--primaryColor);
+    height: 5rem;
+}
+
+/** Header's logo has no padding
+*/
+
+.headerIcon {
+    padding: 0;
+    margin-right: auto;
+    width: 3rem;
+    height: 3rem;
+}
+
+.container {
+    display: flex;
+    height: 100%;
+}

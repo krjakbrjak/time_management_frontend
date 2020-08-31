@@ -17,7 +17,28 @@ import './base.css';
 import loginCss from './Login.css';
 
 /**
- * Component showing login screen.
+ * @description Args for {@link Login.login} callback.
+ *
+ * @typedef {Object} Login.args
+ * @property {string} username Username
+ * @property {string} passwerd Password
+ */
+/**
+ * @async
+ * @callback Login.login
+ * @param {Login.args} args Args.
+ * @return {Promise.<Object>} Information about logged-in user.
+ */
+/**
+ * @description Props for {@link Login} component.
+ *
+ * @typedef {Object} Login.Props
+ * @property {Login.login} [login=false] A callback to log the user in.
+ */
+/**
+ * @description Login screen.
+ *
+ * @param {Login.Props} props Properties
  * @component
  * @example
  * <Login login={() => {}} />

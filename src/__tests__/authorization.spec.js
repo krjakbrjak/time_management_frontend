@@ -36,11 +36,6 @@ describe('<Login />', () => {
             </Provider>
         );
 
-        global.fetch = jest.fn().mockImplementationOnce(() => Promise.resolve({
-            status: 200,
-            json: async () => Promise.resolve({user: 'admin'})
-        }));
-
         fireEvent.change(screen.getByTestId('username'), {
             target: {
                 value: 'admin'

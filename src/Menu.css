@@ -1,0 +1,47 @@
+.menu {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    padding: 1rem;
+}
+
+.menuContent {
+    background-color: var(--primaryColor);
+    position: absolute;
+    top: 100%;
+    right: 0;
+}
+
+.menuContent.off {
+    visibility: hidden;
+}
+
+.menuContent.on {
+    visibility: visible;
+}
+
+.menuContent * {
+    padding: 0.3rem;
+    padding-top: 0;
+}
+
+.menuContent *:nth-child(1) {
+    padding-top: 0.3rem;
+}
+
+.menuIconContainer {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.menuIcon {
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
+}
+
+.btn {
+    composes: btn from './common.css';
+}

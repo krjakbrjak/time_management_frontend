@@ -5,12 +5,16 @@
  */
 
 import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { login, getSession } from './helpers/authorization';
 import Login from './Login';
 import Content from './Content';
+import Header from './Header';
+import Menu from './Menu';
+import LoginStatus from './LoginStatus';
 import { LOGIN, LOGOUT } from './state/actions/user';
+import { isEmpty } from './helpers/object';
 
 import 'normalize.css';
 import './base.css';
@@ -20,6 +24,7 @@ import './base.css';
  * @component
  */
 const App = () => {
+    const globalState = useSelector((state) => state);
     // Shows if the component has been mounted.
     const [mounted, setMounted] = useState(false);
     // Shows if the component was fully initialized,
@@ -57,10 +62,21 @@ const App = () => {
         return null;
     }
 
+    let content = null;
+    if (isEmpty(globalState.user)) {
+        content = <Login login={login} />;
+    } else {
+        content = <Content />;
+    }
+
     return (
         <div>
-            <Login login={login} />
-            <Content />
+            <Header>
+                <Menu>
+                    <LoginStatus isLoggedIn={!isEmpty(globalState.user)} />
+                </Menu>
+            </Header>
+            {content}
         </div>
     );
 };

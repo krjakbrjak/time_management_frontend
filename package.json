@@ -1,5 +1,5 @@
 {
-  "name": "time_management_frontend",
+  "name": "@krjakbrjak/time_management_frontend",
   "version": "0.1.0",
   "description": "",
   "private": true,
@@ -7,7 +7,7 @@
     "build": "webpack",
     "start": "webpack-dev-server",
     "cypress:open": "cypress open",
-    "cypress:run": "cypress run --record --key 9e709ded-eb99-45d4-8a29-c16f79a786cd",
+    "cypress:run": "cypress run",
     "e2e": "start-server-and-test start http://localhost:9000 cypress:run",
     "test": "jest",
     "jsdoc:gen": "jsdoc -c jsdoc.conf.json"
@@ -27,11 +27,14 @@
     "@babel/plugin-transform-runtime": "^7.11.0",
     "@babel/preset-env": "^7.11.0",
     "@babel/preset-react": "^7.10.4",
+    "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^10.4.8",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.1.0",
     "better-docs": "^2.3.0",
     "cypress": "^4.12.0",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.4",
     "eslint": "^7.7.0",
     "eslint-config-airbnb": "^18.2.0",
     "eslint-loader": "^4.0.2",
@@ -40,6 +43,7 @@
     "eslint-plugin-react": "^7.20.6",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^26.2.2",
+    "jest-enzyme": "^7.1.2",
     "jsdoc": "^3.6.5",
     "sinon": "^9.0.3",
     "start-server-and-test": "^1.11.3",
@@ -50,7 +54,6 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.11.2",
-    "@testing-library/jest-dom": "^5.11.3",
     "css-loader": "^4.2.1",
     "normalize.css": "^8.0.1",
     "prop-types": "^15.7.2",
@@ -68,6 +71,9 @@
     "moduleNameMapper": {
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
       "\\.(css|less)$": "identity-obj-proxy"
-    }
+    },
+    "setupFilesAfterEnv": [
+      "<rootDir>/src/setupTests.js"
+    ]
   }
 }

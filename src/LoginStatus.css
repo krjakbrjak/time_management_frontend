@@ -1,0 +1,11 @@
+.status {
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    padding: 0.5rem;
+    background-color: var(--primaryColor);
+}
+
+.logout {
+    composes: btn from './common.css';
+}

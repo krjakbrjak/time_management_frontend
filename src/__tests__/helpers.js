@@ -2,7 +2,7 @@ import sinon from 'sinon';
 
 import {
     login,
-    logout
+    logout,
 } from '../helpers/authorization';
 import { isEmpty } from '../helpers/object';
 
@@ -13,8 +13,8 @@ describe('Helpers', () => {
     beforeEach(() => {
         xhr = sinon.useFakeXMLHttpRequest();
         requests = [];
-        xhr.onCreate = (xhr) => {
-            requests.push(xhr);
+        xhr.onCreate = (req) => {
+            requests.push(req);
         };
     });
 
@@ -27,7 +27,7 @@ describe('Helpers', () => {
             .then((result) => {
                 expect(requests.length).toEqual(1);
                 expect(result).toEqual({
-                    user: 'username'
+                    user: 'username',
                 });
                 done();
             });
@@ -46,7 +46,7 @@ describe('Helpers', () => {
 
     it('isEmpty', async () => {
         expect(isEmpty({})).toEqual(true);
-        expect(isEmpty({a:1})).toEqual(false);
+        expect(isEmpty({ a: 1 })).toEqual(false);
         expect(isEmpty(1)).toEqual(false);
         expect(isEmpty(() => {})).toEqual(false);
     });

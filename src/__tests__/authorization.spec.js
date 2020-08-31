@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import {
     render,
     screen,
-    fireEvent
+    fireEvent,
 } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import sinon from 'sinon';
@@ -20,8 +20,8 @@ describe('<Login />', () => {
     beforeEach(() => {
         xhr = sinon.useFakeXMLHttpRequest();
         requests = [];
-        xhr.onCreate = (xhr) => {
-            requests.push(xhr);
+        xhr.onCreate = (req) => {
+            requests.push(req);
         };
     });
 
@@ -29,22 +29,22 @@ describe('<Login />', () => {
         xhr.restore();
     });
 
-    it('Clicking the Login button', done => {
-        const {container} = render(
+    it('Clicking the Login button', (done) => {
+        const { container } = render(
             <Provider store={store}>
-                <Login login={login}/>
-            </Provider>
+                <Login login={login} />
+            </Provider>,
         );
 
         fireEvent.change(screen.getByTestId('username'), {
             target: {
-                value: 'admin'
-            }
+                value: 'admin',
+            },
         });
         fireEvent.change(screen.getByTestId('password'), {
             target: {
-                value: 'password'
-            }
+                value: 'password',
+            },
         });
 
         fireEvent.click(screen.getByTestId('login'));
@@ -54,6 +54,5 @@ describe('<Login />', () => {
             expect(container.querySelector('[data-testid=password]')).toBeNull();
             done();
         }, 0);
-
     });
 });
